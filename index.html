@@ -97,13 +97,13 @@
 
         <!-- Recipe Section -->
         <section id="recipe">
-            <h2>Get a Cobblemon Recipe!</h2>
-            <p>Click the button below to discover a new recipe!</p>
+            <h2>Get Your Purchase Recipe!</h2>
+            <p>Click the button below to see the recipe for your purchased items.</p>
             <button id="getRecipeBtn">Get Recipe</button>
             <div id="recipeDetails" class="hidden">
-                <h3>Recipe: Poké Ball</h3>
-                <p>Ingredients:</p>
-                <ul>
+                <h3 id="recipeTitle">Your Purchase Recipe</h3>
+                <p>Items:</p>
+                <ul id="recipeIngredients"></ul>
             </div>
         </section>
     </main>
@@ -174,12 +174,28 @@
 
         // Recipe Button functionality
         document.getElementById("getRecipeBtn").addEventListener("click", function() {
-            var recipeSection = document.getElementById("recipeDetails");
-            if (recipeSection.classList.contains("hidden")) {
-                recipeSection.classList.remove("hidden");
+            const recipeDetails = document.getElementById("recipeDetails");
+            const recipeIngredients = document.getElementById("recipeIngredients");
+
+            // Clear previous ingredients
+            recipeIngredients.innerHTML = "";
+
+            // Check if the cart is empty
+            if (cart.length === 0) {
+                const listItem = document.createElement("li");
+                listItem.textContent = "Your cart is empty! Add items to see a recipe.";
+                recipeIngredients.appendChild(listItem);
             } else {
-                recipeSection.classList.add("hidden");
+                // Add purchased items to the list
+                cart.forEach(item => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = `${item.product} - ${item.price} Relic Coins`;
+                    recipeIngredients.appendChild(listItem);
+                });
             }
+
+            // Show the recipe details
+            recipeDetails.classList.remove("hidden");
         });
     </script>
 </body>
