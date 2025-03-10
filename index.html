@@ -94,6 +94,29 @@
                 <button type="submit">Login</button>
             </form>
         </section>
+
+        <!-- Recipe Section -->
+        <section id="recipe">
+            <h2>Get a Cobblemon Recipe!</h2>
+            <p>Click the button below to discover a new recipe!</p>
+            <button id="getRecipeBtn">Get Recipe</button>
+            <div id="recipeDetails" class="hidden">
+                <h3>Recipe: Poké Ball</h3>
+                <p>Ingredients:</p>
+                <ul>
+                    <li>1 Berry</li>
+                    <li>1 Apricorn</li>
+                    <li>1 Cobble</li>
+                </ul>
+                <p>Instructions:</p>
+                <ol>
+                    <li>Place the Berry and Apricorn in a mixing bowl.</li>
+                    <li>Grind the Cobble into powder and add it to the mix.</li>
+                    <li>Shape the mixture into a ball and let it cool.</li>
+                    <li>You're ready to catch Cobblemon!</li>
+                </ol>
+            </div>
+        </section>
     </main>
     
     <footer>
@@ -158,6 +181,16 @@
             
             // Reset form fields
             document.getElementById("signup-form").reset();
+        });
+
+        // Recipe Button functionality
+        document.getElementById("getRecipeBtn").addEventListener("click", function() {
+            var recipeSection = document.getElementById("recipeDetails");
+            if (recipeSection.classList.contains("hidden")) {
+                recipeSection.classList.remove("hidden");
+            } else {
+                recipeSection.classList.add("hidden");
+            }
         });
     </script>
 </body>
