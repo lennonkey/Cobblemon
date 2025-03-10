@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cobblemon Poké Ball Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Cobblemon Poké Ball Shop</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#cart">Cart</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="home">
+            <h2>Welcome to the Cobblemon Poké Ball Shop</h2>
+            <p>Purchase Poké Balls from Cobblemon using Relic Coins!</p>
+        </section>
+        
+        <section id="shop">
+            <h2>Shop</h2>
+            <div class="product">
+                <img src="pokeball.png" alt="Poké Ball">
+                <h3>Poké Ball</h3>
+                <p>Price: 10 Relic Coins</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="greatball.png" alt="Great Ball">
+                <h3>Great Ball</h3>
+                <p>Price: 50 Relic Coins</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="ultraball.png" alt="Ultra Ball">
+                <h3>Ultra Ball</h3>
+                <p>Price: 100 Relic Coins</p>
+                <button>Add to Cart</button>
+            </div>
+            <div class="product">
+                <img src="masterball.png" alt="Master Ball">
+                <h3>Master Ball</h3>
+                <p>Price: 1000 Relic Coins</p>
+                <button>Add to Cart</button>
+            </div>
+        </section>
+        
+        <section id="cart">
+            <h2>Your Cart</h2>
+            <p>Items will appear here.</p>
+        </section>
+        
+        <section id="login">
+            <h2>Login</h2>
+            <form>
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Login</button>
+            </form>
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Cobblemon Poké Ball Shop</p>
+    </footer>
+</body>
+</html>
