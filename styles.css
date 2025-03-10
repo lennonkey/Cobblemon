@@ -1,21 +1,16 @@
 /* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f0f0f0;
+    background-color: #f9f9f9;
     color: #333;
 }
 
-h1, h2, h3 {
-    color: #4CAF50;
-}
-
-/* Header */
 header {
-    background-color: #333;
-    color: white;
-    padding: 10px 0;
+    background-color: #1c1c1c;
+    color: #fff;
+    padding: 15px 0;
     text-align: center;
 }
 
@@ -35,201 +30,33 @@ nav ul li {
 }
 
 nav ul li a {
+    color: #fff;
     text-decoration: none;
-    color: white;
-    font-weight: bold;
+    font-size: 18px;
 }
 
 nav ul li a:hover {
     text-decoration: underline;
 }
 
-/* Main Section */
 main {
     padding: 20px;
     max-width: 1200px;
     margin: 0 auto;
 }
 
+/* Sections */
 section {
     margin-bottom: 40px;
 }
 
 h2 {
-    border-bottom: 2px solid #4CAF50;
-    padding-bottom: 5px;
-}
-
-/* Shop Section */
-#shop {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
+    font-size: 24px;
+    color: #333;
 }
 
 .product {
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    background-color: #fff;
     padding: 20px;
-    width: 200px;
-    text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.product h3 {
-    margin: 10px 0;
-}
-
-.product p {
-    font-size: 1.1em;
-    margin-bottom: 15px;
-}
-
-.product button {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 1em;
-    width: 100%;
-}
-
-.product button:hover {
-    background-color: #45a049;
-}
-
-.product a {
-    display: block;
-    margin-top: 10px;
-    text-decoration: none;
-    color: #4CAF50;
-    font-size: 0.9em;
-}
-
-.product a:hover {
-    text-decoration: underline;
-}
-
-/* Cart Section */
-#cart-items {
     margin-bottom: 20px;
-}
-
-button {
-    margin: 5px;
-    cursor: pointer;
-}
-
-button:hover {
-    opacity: 0.9;
-}
-
-/* Login Section */
-#login form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-}
-
-#login input {
-    margin: 5px 0 15px;
-    padding: 10px;
-    width: 200px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-}
-
-#login button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#login button:hover {
-    background-color: #45a049;
-}
-
-#login-message {
-    margin-top: 10px;
-    font-size: 1.1em;
-}
-
-/* Profile Section */
-#profile p {
-    margin: 10px 0;
-}
-
-#profile button {
-    padding: 8px 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-#profile button:hover {
-    background-color: #45a049;
-}
-
-/* Footer */
-footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 40px;
-}
-
-footer ul {
-    list-style: none;
-    padding: 0;
-}
-
-footer ul li {
-    display: inline;
-    margin: 0 10px;
-}
-
-footer ul li a {
-    text-decoration: none;
-    color: white;
-}
-
-footer ul li a:hover {
-    text-decoration: underline;
-}
-
-/* Search Bar */
-#search {
-    padding: 10px;
-    margin-top: 20px;
-    width: 100%;
-    max-width: 300px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 1em;
-    display: block;
-    margin-bottom: 30px;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    nav ul {
-        text-align: center;
-    }
-
-    .product {
-        width: 100%;
-    }
-
-    #shop {
-        flex-direction: column;
-    }
-}
+    box-shadow: 0 2px 5px rgba(0, 0, 0
