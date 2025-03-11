@@ -30,21 +30,21 @@
             <h2>Shop</h2>
             <div class="product">
                 <h3>Poké Ball</h3>
-                <p>Price: 1 Relic Coins</p>
+                <p>Price: 1 Relic Coin</p>
                 <button onclick="addToCart('Poké Ball', 1)">Add to Cart</button>
             </div>
             <div class="product">
-                <h3>Great Ball Not in stock</h3>
+                <h3>Great Ball (Not in stock)</h3>
                 <p>Price: 10 Relic Coins</p>
                 <button onclick="addToCart('Great Ball', 10)">Add to Cart</button>
             </div>
             <div class="product">
-                <h3>Ultra Ball Not in stock</h3>
+                <h3>Ultra Ball (Not in stock)</h3>
                 <p>Price: 25 Relic Coins</p>
                 <button onclick="addToCart('Ultra Ball', 25)">Add to Cart</button>
             </div>
             <div class="product">
-                <h3>Master Ball Not in stock</h3>
+                <h3>Master Ball (Not in stock)</h3>
                 <p>Price: 50 Relic Coins</p>
                 <button onclick="addToCart('Master Ball', 50)">Add to Cart</button>
             </div>
@@ -96,15 +96,10 @@
         </section>
 
         <!-- Recipe Section -->
-        <section id="recipe">
-            <h2>Get Your Purchase Recipe!</h2>
-            <p>Click the button below to see the recipe for your purchased items.</p>
-            <button id="getRecipeBtn">Get Recipe</button>
-            <div id="recipeDetails" class="hidden">
-                <h3 id="recipeTitle">Your Purchase Recipe</h3>
-                <p>Items:</p>
-                <ul id="recipeIngredients"></ul>
-            </div>
+        <section id="recipe" style="display: none;">
+            <h2>Your Purchase Recipe</h2>
+            <p>Here are the items you purchased along with the purchase time.</p>
+            <ul id="recipeIngredients"></ul>
         </section>
     </main>
     
@@ -115,32 +110,31 @@
     <script>
         // Cart management
         let cart = [];
-        
+        let purchaseHistory = []; // Stores completed purchases
+
         function addToCart(product, price) {
-            cart.push({ product, price });
+            const timestamp = new Date().toLocaleString(); // Get current time
+            cart.push({ product, price, timestamp });
             updateCartDisplay();
         }
-        
+
         function updateCartDisplay() {
             const cartItemsElement = document.getElementById("cart-items");
             const totalPriceElement = document.getElementById("total-price");
-            
-            // Clear the current cart display
-            cartItemsElement.innerHTML = "";
-            
-            // Add cart items to the display
+
+            cartItemsElement.innerHTML = ""; // Clear cart display
+
             let totalPrice = 0;
             cart.forEach(item => {
                 const listItem = document.createElement("li");
-                listItem.textContent = `${item.product} - ${item.price} Relic Coins`;
+                listItem.textContent = `${item.product} - ${item.price} Relic Coins (Added: ${item.timestamp})`;
                 cartItemsElement.appendChild(listItem);
                 totalPrice += item.price;
             });
-            
-            // Update total price
+
             totalPriceElement.textContent = totalPrice;
         }
-        
+
         function proceedToCheckout() {
             if (cart.length === 0) {
                 alert("Your cart is empty! Add items to the cart before proceeding.");
@@ -149,54 +143,48 @@
             document.getElementById("cart").style.display = "none";
             document.getElementById("checkout").style.display = "block";
         }
-        
+
         document.getElementById("checkout-form").addEventListener("submit", function(event) {
             event.preventDefault();
-            alert("Your purchase has been completed!");
+
+            // Move items from cart to purchase history
+            purchaseHistory = [...cart];
+
+            // Generate recipe after purchase
+            generateRecipe();
+
+            // Clear the cart
             cart = [];
             updateCartDisplay();
+            
+            // Hide checkout, show cart again
             document.getElementById("checkout").style.display = "none";
             document.getElementById("cart").style.display = "block";
+
+            alert("Your purchase has been completed! Your recipe has been generated.");
         });
 
-        // Sign-Up form submission
-        document.getElementById("signup-form").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const username = document.getElementById("new-username").value;
-            const email = document.getElementById("new-email").value;
-            const password = document.getElementById("new-password").value;
-            
-            alert(`Account created for ${username} with email ${email}`);
-            
-            // Reset form fields
-            document.getElementById("signup-form").reset();
-        });
-
-        // Recipe Button functionality
-        document.getElementById("getRecipeBtn").addEventListener("click", function() {
-            const recipeDetails = document.getElementById("recipeDetails");
+        // Generates the recipe after purchase
+        function generateRecipe() {
+            const recipeSection = document.getElementById("recipe");
             const recipeIngredients = document.getElementById("recipeIngredients");
 
-            // Clear previous ingredients
-            recipeIngredients.innerHTML = "";
+            recipeIngredients.innerHTML = ""; // Clear previous list
 
-            // Check if the cart is empty
-            if (cart.length === 0) {
+            if (purchaseHistory.length === 0) {
                 const listItem = document.createElement("li");
-                listItem.textContent = "Your cart is empty! Add items to see a recipe.";
+                listItem.textContent = "No purchases made yet.";
                 recipeIngredients.appendChild(listItem);
             } else {
-                // Add purchased items to the list
-                cart.forEach(item => {
+                purchaseHistory.forEach(item => {
                     const listItem = document.createElement("li");
-                    listItem.textContent = `${item.product} - ${item.price} Relic Coins`;
+                    listItem.textContent = `${item.product} - ${item.price} Relic Coins (Purchased: ${item.timestamp})`;
                     recipeIngredients.appendChild(listItem);
                 });
             }
 
-            // Show the recipe details
-            recipeDetails.classList.remove("hidden");
-        });
+            recipeSection.style.display = "block"; // Show recipe section
+        }
     </script>
 </body>
 </html>
